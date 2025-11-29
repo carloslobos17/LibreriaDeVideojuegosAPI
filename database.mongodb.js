@@ -11,19 +11,23 @@ db.getCollection("Usuario").insertOne([
                 titulo: "River City Girls",
                 fecha_lanzamiento: new Date('2019-09-05'),
                 desarrollador:[
+                    {_id: ObjectId()},
                     "WayForward"
                 ],
                 editora:[
+                    {_id: ObjectId()},
                     "Arc System Works",
                     "WayForward",
                     "H2 Interactive"
                 ],
                 generos:[
+                    {_id: ObjectId()},                    
                     "Beat 'em-up",
                     "Accion"
                 ],
                 prestamo_familiar: 'si',
                 idiomas:[
+                    {_id: ObjectId()},                    
                     "Ingles",
                     "Frances",
                     "Italiano",
@@ -42,16 +46,20 @@ db.getCollection("Usuario").insertOne([
                 titulo: "Stardew Valley",
                 fecha_lanzamiento: new Date('2016-02-26'),
                 desarrollador:[
+                    {_id: ObjectId()},
                     "ConcernedApe"
                 ],
                 editora:[
+                    {_id: ObjectId()},
                     "ConcernedApe"
                 ],
                 generos:[
+                    {_id: ObjectId()},
                     "Simulador de granja"
                 ],
                 prestamo_familiar: 'si',
                 idiomas:[
+                    {_id: ObjectId()},
                     "Ingles",
                     "Hungaro",
                     "Italiano",
