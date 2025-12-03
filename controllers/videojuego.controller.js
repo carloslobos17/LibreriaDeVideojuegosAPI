@@ -135,7 +135,7 @@ exports.buscarPorRangoAnios = async (req, res) => {
 
 exports.buscarPorGeneros = async (req, res) => {
     try {
-        const { generos } = req.body;
+        const { generos } = req.query;
 
         if (!generos || !Array.isArray(generos)) {
             return res.status(400).json({
