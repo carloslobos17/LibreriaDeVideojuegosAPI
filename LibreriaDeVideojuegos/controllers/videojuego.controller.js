@@ -80,3 +80,76 @@ exports.obtenerPorFecha = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+exports.buscarPorAnio = async (req, res) => {
+    try {
+        const { anio } = req.query;
+
+        const juegos = await Videojuego.find({
+            fecha_lanzamiento: { $gte: new Date(`${anio}-01-01`) }
+        });
+
+        res.json(juegos);
+
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+exports.buscarPorProductorYDesarrollador = async (req, res) => {
+    try {
+        const { productor, desarrollador } = req.query;
+
+        const juegos = await Videojuego.find({
+            $and: [
+                { productor: productor },
+                { desarrollador: desarrollador }
+            ]
+        });
+
+        res.json(juegos);
+
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+exports.buscarPorRangoAnios = async (req, res) => {
+    try {
+        const { inicio, fin } = req.query;
+
+        const juegos = await Videojuego.find({
+            fecha_lanzamiento: {
+                $gte: new Date(`${inicio}-01-01`),
+                $lte: new Date(`${fin}-12-31`)
+            }
+        });
+
+        res.json(juegos);
+
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+
+exports.buscarPorGeneros = async (req, res) => {
+    try {
+        const { generos } = req.body;
+
+        if (!generos || !Array.isArray(generos)) {
+            return res.status(400).json({
+                error: "Debes enviar un arreglo de géneros."
+            });
+        }
+
+        const resultados = await Videojuego.find({
+            generos: { $in: generos }
+        });
+
+        res.json(resultados);
+
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
